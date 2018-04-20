@@ -1,6 +1,6 @@
 class Editor{
     constructor(tema,modo){
-        this._modo = modo;
+        this._linguagem = modo;
         this._tema = tema;
         this._aceEditor = ace.edit("editor");
 
@@ -8,8 +8,8 @@ class Editor{
 
     }
 
-    get modo(){
-        return this._modo;
+    get linguagem(){
+        return this._linguagem;
     }
 
     get codigo(){
@@ -18,11 +18,11 @@ class Editor{
 
     initEditor() {
         this._aceEditor.setTheme("ace/theme/".concat(this._tema));
-        this._aceEditor.session.setMode("ace/mode/".concat(this._modo));
+        this._aceEditor.session.setMode("ace/mode/".concat(this._linguagem));
     }
 
     alterarLinguagem(linguagem){
-        console.log("aqui");
+        this._linguagem = linguagem;
         this._aceEditor.session.setMode("ace/mode/".concat(linguagem));
     }
 }

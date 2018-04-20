@@ -24,7 +24,7 @@ class EditorController {
 
         let submit = new Submit();
         submit.code = this._editor.codigo;
-        submit.linguagem = this._editor._modo;
+        submit.linguagem = this._editor.linguagem;
 
         fetch("http://localhost:8080/EditorWebService/webresources/editor", {
             method: 'post',
