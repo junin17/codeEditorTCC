@@ -1,0 +1,33 @@
+{
+  "name": "tcc",
+  "version": "1.0.0",
+  "description": "Meu Trabalho de Conclusão de Curso",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/junin17/codeEditorTCC.git"
+  },
+  "keywords": [
+    "es6",
+    "tcc",
+    "javascript",
+    "codeeditor"
+  ],
+  "author": "Carlos Ribeiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/junin17/codeEditorTCC/issues"
+  },
+  "homepage": "https://github.com/junin17/codeEditorTCC#readme",
+  "dependencies": {
+    "ace-code-editor": "^1.2.3",
+    "bootstrap": "^4.1.0",
+    "bootstrap-select": "^1.13.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
+    "pubsub-js": "^1.6.0"
+  }
+}

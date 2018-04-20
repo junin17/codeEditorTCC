@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>CodeEditor</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -55,8 +55,16 @@
             <div class="container-fluid">
                 <h1>Desafio Nº1</h1>
                 <p>Dado um numero X, poste o fatorial do mesmo: </p>
+                <select id="comboLanguages" style="margin-bottom: 5px" class="selectpicker">
+                    <option value="javascript">JavaScript</option>
+                    <option value="csharp">C#</option>
+                    <option value="java">Java</option>
+                    <option value="python">Python</option>
+                </select>
                 <div id="editor">function fatorial(x) { }
                 </div>
+
+                <button type="button" className="pure-button pure-button-primary" style="margin-top: 5px" onclick="controler.enviaDados(event)">Submit</button>
 
             </div>
         </div>
@@ -70,6 +78,12 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
 
+    <!-- Model -->
+    <script src="js/app/model/Editor.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/app/model/Submit.js" type="text/javascript" charset="utf-8"></script>
+    <!-- Controllers -->
+    <script src="js/app/controllers/EditorController.js" type="text/javascript" charset="utf-8"></script>
+
     <!-- Menu Toggle Script -->
     <script>
         // $("#menu-toggle").click(function(e) {
@@ -82,9 +96,11 @@
     </script>
 
     <script>
-        var editor = ace.edit("editor");
-        editor.setTheme("ace/theme/dracula");
-        editor.session.setMode("ace/mode/javascript");
+        
+
+        let controler = new EditorController();
+
+
     </script>
 
 </body>
