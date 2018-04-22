@@ -5,11 +5,15 @@
  */
 package br.com.carlosribeiro.editorwebservice.compiler;
 
+import br.com.carlosribeiro.editorwebservice.enums.RespostaEnum;
+import br.com.carlosribeiro.editorwebservice.model.Execucao;
+import br.com.carlosribeiro.editorwebservice.model.Resposta;
 import br.com.carlosribeiro.editorwebservice.util.FileUtil;
+import br.com.carlosribeiro.editorwebservice.util.StringUtil;
 import java.io.IOException;
 
 /**
- *
+ * Classe para executar os códigos em Java
  * @author carlos.ribeiro
  */
 public final class JavaCompiler extends Compiler {
@@ -21,27 +25,47 @@ public final class JavaCompiler extends Compiler {
     }
 
     @Override
-    public String submit(String texto, String linguagem) {
-
+    public Resposta submit(String texto, String linguagem) {
+        Resposta resposta = new Resposta();
         try {
+            
             StringBuilder output = new StringBuilder();
 
             FileUtil.salvarArquivoTexto("Main", texto, extensao);
             this.arquivo = "Main";
-
-            output.append(compile());
-            output.append(run());
             
-            return output.toString();
+            Execucao compile = compile();
+            
+            if (!StringUtil.isNullOrWhiteSpace(compile.getErroExecucao())){
+                resposta.setStatus(RespostaEnum.ERROR.getValor());
+                resposta.setSaida(compile.getErroExecucao());
+                return resposta;
+            }
+            
+            Execucao run = run();
+            
+            if (!StringUtil.isNullOrWhiteSpace(run.getErroExecucao())){
+                resposta.setStatus(RespostaEnum.ERROR.getValor());
+                resposta.setSaida(run.getRespostaExecucao());
+                return resposta;
+            }
+            
+            resposta.setSaida(run.getRespostaExecucao());
+            resposta.setStatus(RespostaEnum.OK.getValor());
+
+            
+            return resposta;
         } catch (IOException | InterruptedException ex) {
             System.err.println(ex.getMessage());
-            return ex.getMessage();
+            resposta.setSaida(ex.getMessage());
+            resposta.setStatus(RespostaEnum.ERROR.getValor());
+            return resposta;
         }
 
     }
 
     @Override
-    String compile() throws IOException, InterruptedException {
+    Execucao compile() throws IOException, InterruptedException {
 
         try {
             return runProcess(this.comando, this.arquivo + ".java");
@@ -51,7 +75,7 @@ public final class JavaCompiler extends Compiler {
     }
 
     @Override
-    String run() throws IOException, InterruptedException{
+    Execucao run() throws IOException, InterruptedException{
         try {
             return runProcess("java", this.arquivo);
         } catch (IOException | InterruptedException ex) {

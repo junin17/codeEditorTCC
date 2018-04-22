@@ -1,7 +1,7 @@
-class Submit{
-    constructor(){
+class Submit {
+    constructor() {
         this.code = "";
-        this.linguagem="";
+        this.linguagem = "";
     }
 
 }

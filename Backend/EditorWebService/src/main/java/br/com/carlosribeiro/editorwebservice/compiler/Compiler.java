@@ -5,13 +5,15 @@
  */
 package br.com.carlosribeiro.editorwebservice.compiler;
 
+import br.com.carlosribeiro.editorwebservice.model.Execucao;
+import br.com.carlosribeiro.editorwebservice.model.Resposta;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
- *
+ * Classe abstrata que define um Compilador.
  * @author carlos.ribeiro
  */
 public abstract class Compiler {
@@ -20,27 +22,26 @@ public abstract class Compiler {
     protected String comando;
     protected String arquivo;
 
-    abstract String submit(String texto, String linguagem);
+    abstract Resposta submit(String texto, String linguagem);
 
-    abstract String compile() throws IOException, InterruptedException;
+    abstract Execucao compile() throws IOException, InterruptedException;
 
-    abstract String run() throws IOException, InterruptedException;
+    abstract Execucao run() throws IOException, InterruptedException;
 
-    protected String runProcess(String comando, String arquivo) throws IOException, InterruptedException {
+    protected Execucao runProcess(String comando, String arquivo) throws IOException, InterruptedException {
         try {
-            StringBuilder output = new StringBuilder();
+            Execucao execucao = new Execucao();
+            
             String command = comando + " " + arquivo;
             Process pro = Runtime.getRuntime().exec(command);
-            //printLines(command + " stdout:", pro.getInputStream());
-            //printLines(command + " stderr:", pro.getErrorStream());
             
-            output.append(getOutput(pro.getInputStream()));
-            output.append(getOutput(pro.getErrorStream()));
+            execucao.setRespostaExecucao(getOutput(pro.getInputStream()));
+            execucao.setErroExecucao(getOutput(pro.getErrorStream()));
             
             pro.waitFor();
             
             
-            return output.toString();
+            return execucao;
         }
         catch(IOException | InterruptedException ex){
             System.err.println(ex.getMessage());
@@ -51,7 +52,7 @@ public abstract class Compiler {
     
     private String getOutput(InputStream ins) throws IOException {
         StringBuilder output = new StringBuilder();
-        String line = null;
+        String line;
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(ins));
         while ((line = in.readLine()) != null) {

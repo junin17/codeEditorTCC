@@ -6,6 +6,7 @@
 package br.com.carlosribeiro.editorwebservice.services;
 
 import br.com.carlosribeiro.editorwebservice.compiler.JavaCompiler;
+import br.com.carlosribeiro.editorwebservice.model.Resposta;
 import br.com.carlosribeiro.editorwebservice.model.Submit;
 import com.google.gson.Gson;
 import javax.ws.rs.core.Context;
@@ -63,7 +64,7 @@ public class EditorService {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response postCodigo(String content){
-        String resposta = "";
+        Resposta resposta = null;
         Gson gson = new Gson();
         
         Submit submit = gson.fromJson(content, Submit.class);
@@ -74,8 +75,10 @@ public class EditorService {
             
         }
         
+        
+        
         return Response.ok() //200
-			.entity(resposta)
+			.entity(gson.toJson(resposta))
 			.header("Access-Control-Allow-Origin", "*")
 			.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
 			.allow("OPTIONS").build();
