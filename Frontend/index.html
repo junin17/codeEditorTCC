@@ -52,8 +52,8 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <h1>Desafio Nº1</h1>
+            <div class="container-fluid" id="test">
+                <h1>Desafio</h1>
                 <p>Dado um numero X, poste o fatorial do mesmo: </p>
                 <select id="comboLanguages" style="margin-bottom: 5px" class="selectpicker">
                     <option value="javascript">JavaScript</option>
@@ -66,6 +66,12 @@
 
                 <button type="button" className="pure-button pure-button-primary" style="margin-top: 5px" onclick="controler.enviaDados(event)">Submit</button>
 
+                <div class="saida" style="margin-top: 20px">
+                    <span id="saida">
+                        
+                    </span>
+                </div>
+
             </div>
         </div>
         <!-- /#page-content-wrapper -->
@@ -74,6 +80,8 @@
     <!-- /#wrapper -->
 
     <!-- Bootstrap core JavaScript -->
+    <script src="js/vue/vue.js" type="text/javascript" charset="utf-8"></script>
+    
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
 

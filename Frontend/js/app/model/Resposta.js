@@ -8,5 +8,7 @@ class Resposta{
         }
     }
 
-   
+   get saidaFormatada(){
+       return this.saida.split('\n').join('<br/>');
+   }
 }

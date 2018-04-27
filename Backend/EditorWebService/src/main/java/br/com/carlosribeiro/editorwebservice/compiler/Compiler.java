@@ -56,7 +56,7 @@ public abstract class Compiler {
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(ins));
         while ((line = in.readLine()) != null) {
-            output.append(line);
+            output.append(line).append('\n');
         }
         
         return output.toString();

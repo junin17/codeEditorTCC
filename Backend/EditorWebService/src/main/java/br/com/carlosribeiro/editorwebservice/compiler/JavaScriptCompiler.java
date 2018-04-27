@@ -13,17 +13,16 @@ import br.com.carlosribeiro.editorwebservice.util.StringUtil;
 import java.io.IOException;
 
 /**
- * Classe para executar os códigos em Java
+ *
  * @author carlos.ribeiro
  */
-public final class JavaCompiler extends Compiler {
+public class JavaScriptCompiler extends Compiler{
 
-    public JavaCompiler() {
-        this.comando = "javac";
-        this.extensao = "java";
-
+    public JavaScriptCompiler(){
+        this.comando = "node";
+        this.extensao = "js";
     }
-
+    
     @Override
     public Resposta submit(String texto, String linguagem) {
         Resposta resposta = new Resposta();
@@ -31,13 +30,7 @@ public final class JavaCompiler extends Compiler {
             FileUtil.salvarArquivoTexto("Main", texto, extensao);
             this.arquivo = "Main";
             
-            Execucao compile = compile();
             
-            if (!StringUtil.isNullOrWhiteSpace(compile.getErroExecucao())){
-                resposta.setStatus(RespostaEnum.ERROR.getValor());
-                resposta.setSaida(compile.getErroExecucao());
-                return resposta;
-            }
             
             Execucao run = run();
             
@@ -58,26 +51,20 @@ public final class JavaCompiler extends Compiler {
             resposta.setStatus(RespostaEnum.ERROR.getValor());
             return resposta;
         }
-
     }
 
     @Override
     Execucao compile() throws IOException, InterruptedException {
-
-        try {
-            return runProcess(this.comando, this.arquivo + ".java");
-        } catch (IOException | InterruptedException ex) {
-            throw ex;
-        }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    Execucao run() throws IOException, InterruptedException{
+    Execucao run() throws IOException, InterruptedException {
         try {
-            return runProcess("java", this.arquivo);
+            return runProcess(this.comando, this.arquivo.concat(".js"));
         } catch (IOException | InterruptedException ex) {
             throw ex;
         }
     }
-
+    
 }

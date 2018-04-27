@@ -6,6 +6,8 @@
 package br.com.carlosribeiro.editorwebservice.services;
 
 import br.com.carlosribeiro.editorwebservice.compiler.JavaCompiler;
+import br.com.carlosribeiro.editorwebservice.compiler.JavaScriptCompiler;
+import br.com.carlosribeiro.editorwebservice.compiler.PythonCompiler;
 import br.com.carlosribeiro.editorwebservice.model.Resposta;
 import br.com.carlosribeiro.editorwebservice.model.Submit;
 import com.google.gson.Gson;
@@ -73,6 +75,16 @@ public class EditorService {
             JavaCompiler compiladorJava = new JavaCompiler();
             resposta = compiladorJava.submit(submit.getCode(), submit.getLinguagem());
             
+        }
+        
+        else if (submit.getLinguagem().equals("python")){
+            PythonCompiler compiladorPython = new PythonCompiler();
+            resposta = compiladorPython.submit(submit.getCode(), submit.getLinguagem());
+        }
+        
+        else if (submit.getLinguagem().equals("javascript")){
+            JavaScriptCompiler compiladorJS = new JavaScriptCompiler();
+            resposta = compiladorJS.submit(submit.getCode(), submit.getLinguagem());
         }
         
         

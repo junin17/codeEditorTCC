@@ -40,8 +40,8 @@ body {
 }
 
 #page-content-wrapper {
-  width: 100%;
-  position: absolute;
+  width: 50%;
+  position: relative;
   padding: 15px;
 }
 
@@ -123,11 +123,4 @@ body {
 
 .submit{
   margin: 10px 0px 0px 0px
-}
-
-.saida{
-  background-color: lightgray;
-  border: 1 px black;
-  flex: 1;
-  
 }
