@@ -1,3 +1,1 @@
-
-
 var controler = new EditorController();

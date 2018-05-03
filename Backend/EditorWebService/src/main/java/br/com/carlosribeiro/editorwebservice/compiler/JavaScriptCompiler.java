@@ -20,19 +20,19 @@ public class JavaScriptCompiler extends Compiler{
 
     public JavaScriptCompiler(){
         this.comando = "node";
-        this.extensao = "js";
+        this.extensao = ".js";
     }
     
     @Override
     public Resposta submit(String texto, String linguagem) {
         Resposta resposta = new Resposta();
         try {
-            FileUtil.salvarArquivoTexto("Main", texto, extensao);
+            FileUtil.salvaArquivoTexto("Main", texto, extensao);
             this.arquivo = "Main";
             
             
             
-            Execucao run = run();
+            Execucao run = runProcess(this.comando, this.arquivo.concat(this.extensao));;
             
             if (!StringUtil.isNullOrWhiteSpace(run.getErroExecucao())){
                 resposta.setStatus(RespostaEnum.ERROR.getValor());
@@ -53,18 +53,6 @@ public class JavaScriptCompiler extends Compiler{
         }
     }
 
-    @Override
-    Execucao compile() throws IOException, InterruptedException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    Execucao run() throws IOException, InterruptedException {
-        try {
-            return runProcess(this.comando, this.arquivo.concat(".js"));
-        } catch (IOException | InterruptedException ex) {
-            throw ex;
-        }
-    }
+   
     
 }

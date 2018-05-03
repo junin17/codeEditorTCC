@@ -1,43 +1,59 @@
 class EditorController {
 
+    /**
+     * Construtor de EditorController
+     */
     constructor() {
-
         
-        this._editor = new Editor("monokai","javascript");
+        this._editorView = new EditorView("monokai","javascript");
         this._linguagens = document.querySelector("#comboLanguages");
-        this._service = new RestService();
-
-        this.init();
-
-    }
-
-    init() {
-
-
-        this._linguagens.addEventListener("change", event => this._editor.alterarLinguagem(this._linguagens.value));
+        this._service = new EditorService();
+        this.selecionaLinguagem();
 
     }
 
-    enviaDados(event) {
-        console.log("Iniciando Requisição...")
+   
+    /**
+     * Listener que seta linguagem selecionada para o Editor
+     * @param {event} event 
+     */
+    selecionaLinguagem(event){
+        this._editorView.alterarLinguagem(this._linguagens.value);
 
-        let submit = new Submit();
-        submit.code = this._editor.codigo;
-        submit.linguagem = this._editor.linguagem;
-
-        this._service.post("http://localhost:8080/EditorWebService/webresources/editor",submit)
+        this._service.getCodigoPadrao(this._linguagens.value)
         .then(res => {
             let resposta = new Resposta(res);
-            console.log(resposta);
+            this._editorView.modificaTexto(resposta.saida);
+        })
+        .catch(error => console.error(error));
+
+    }
+
+    /**
+     * Listener que envia a submissão para o Serviço
+     * @param {event} event 
+     */
+    enviaSubmissao(event) {
+
+        let submit = new Submit();
+        submit.code = this._editorView.codigo;
+        submit.linguagem = this._editorView.linguagem;
+
+        this._service.enviaCodigo(submit)
+        .then(res => {
+            let resposta = new Resposta(res);
             this.exibeResposta(resposta);
         })
         .catch(error => console.error(error));
         
 
     }
-
+    
+    /**
+     * Método que exibe a Resposta da execução do código
+     * @param {Resposta} resposta 
+     */
     exibeResposta(resposta){
-        console.log("here");
         let saida = document.querySelector("#saida");
         saida.innerHTML = resposta.saidaFormatada;
     }

@@ -1,15 +1,15 @@
 class RestService{
 
-    constructor(){
-
-    }
-
     _handleErrors(res){
         if (!res.ok) throw new Error (res.statusText);
         return res;
         
     }
 
+    /**
+     * Faz uma requisição do tipo GET
+     * @param {string} url 
+     */
     get(url) {
         return fetch(url)
         .then(res => this._handleErrors(res))
@@ -17,6 +17,11 @@ class RestService{
 
     }
 
+    /**
+     * Faz uma requisição do tipo POST
+     * @param {string} url 
+     * @param {*} dado 
+     */
     post(url, dado) {
 
         return fetch(url,{

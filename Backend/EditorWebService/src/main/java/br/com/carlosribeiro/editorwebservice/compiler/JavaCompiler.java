@@ -20,7 +20,7 @@ public final class JavaCompiler extends Compiler {
 
     public JavaCompiler() {
         this.comando = "javac";
-        this.extensao = "java";
+        this.extensao = ".java";
 
     }
 
@@ -28,10 +28,10 @@ public final class JavaCompiler extends Compiler {
     public Resposta submit(String texto, String linguagem) {
         Resposta resposta = new Resposta();
         try {
-            FileUtil.salvarArquivoTexto("Main", texto, extensao);
+            FileUtil.salvaArquivoTexto("Main", texto, extensao);
             this.arquivo = "Main";
             
-            Execucao compile = compile();
+            Execucao compile = runProcess(this.comando, this.arquivo + this.extensao);
             
             if (!StringUtil.isNullOrWhiteSpace(compile.getErroExecucao())){
                 resposta.setStatus(RespostaEnum.ERROR.getValor());
@@ -39,7 +39,7 @@ public final class JavaCompiler extends Compiler {
                 return resposta;
             }
             
-            Execucao run = run();
+            Execucao run = runProcess("java", this.arquivo);
             
             if (!StringUtil.isNullOrWhiteSpace(run.getErroExecucao())){
                 resposta.setStatus(RespostaEnum.ERROR.getValor());
@@ -61,23 +61,5 @@ public final class JavaCompiler extends Compiler {
 
     }
 
-    @Override
-    Execucao compile() throws IOException, InterruptedException {
-
-        try {
-            return runProcess(this.comando, this.arquivo + ".java");
-        } catch (IOException | InterruptedException ex) {
-            throw ex;
-        }
-    }
-
-    @Override
-    Execucao run() throws IOException, InterruptedException{
-        try {
-            return runProcess("java", this.arquivo);
-        } catch (IOException | InterruptedException ex) {
-            throw ex;
-        }
-    }
 
 }

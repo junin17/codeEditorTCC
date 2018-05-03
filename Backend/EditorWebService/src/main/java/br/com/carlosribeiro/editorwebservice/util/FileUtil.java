@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -25,10 +26,9 @@ public class FileUtil {
      * @param texto
      * @param extensao
      */
-    public static void salvarArquivoTexto(String nomeArq, String texto, String extensao) {
+    public static void salvaArquivoTexto(String nomeArq, String texto, String extensao) {
         try {
             StringBuilder builder = new StringBuilder(nomeArq);
-            builder.append(".");
             builder.append(extensao);
 
             Path file = Paths.get(builder.toString());
@@ -39,5 +39,16 @@ public class FileUtil {
             System.err.println(ex.getMessage());
         }
 
+    }
+    
+    public static List<String> leArquivoTexto(String nomeArq) throws IOException{
+        try{
+            Path file = Paths.get(nomeArq);
+            return Files.readAllLines(file,Charset.forName("UTF-8"));
+        }
+        catch(IOException ex){
+            System.err.println(ex.getMessage());
+            throw ex;
+        }
     }
 }

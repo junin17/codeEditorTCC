@@ -24,9 +24,6 @@ public abstract class Compiler {
 
     abstract Resposta submit(String texto, String linguagem);
 
-    abstract Execucao compile() throws IOException, InterruptedException;
-
-    abstract Execucao run() throws IOException, InterruptedException;
 
     protected Execucao runProcess(String comando, String arquivo) throws IOException, InterruptedException {
         try {

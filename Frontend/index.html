@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 
@@ -55,7 +55,7 @@
             <div class="container-fluid" id="test">
                 <h1>Desafio</h1>
                 <p>Dado um numero X, poste o fatorial do mesmo: </p>
-                <select id="comboLanguages" style="margin-bottom: 5px" class="selectpicker">
+                <select id="comboLanguages" style="margin-bottom: 5px" class="selectpicker" onchange="controler.selecionaLinguagem(event)">
                     <option value="javascript">JavaScript</option>
                     <option value="csharp">C#</option>
                     <option value="java">Java</option>
@@ -64,7 +64,7 @@
                 <div id="editor">function fatorial(x) { }
                 </div>
 
-                <button type="button" className="pure-button pure-button-primary" style="margin-top: 5px" onclick="controler.enviaDados(event)">Submit</button>
+                <button type="button" className="pure-button pure-button-primary" style="margin-top: 5px" onclick="controler.enviaSubmissao(event)">Submit</button>
 
                 <div class="saida" style="margin-top: 20px">
                     <span id="saida">
@@ -79,8 +79,7 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="js/vue/vue.js" type="text/javascript" charset="utf-8"></script>
+    <!-- Bootstrap core JavaScript -->npm
     
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
@@ -90,8 +89,9 @@
 
     <!-- Services -->
     <script src="js/app-es5/services/RestService.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/app-es5/services/EditorService.js" type="text/javascript" charset="utf-8"></script>
     <!-- Model -->
-    <script src="js/app-es5/model/Editor.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/app-es5/view/EditorView.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/app-es5/model/Submit.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/app-es5/model/Resposta.js" type="text/javascript" charset="utf-8"></script>
     
