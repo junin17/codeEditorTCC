@@ -6,7 +6,7 @@ class EditorController {
     constructor() {
         
         this._editorView = new EditorView("monokai","javascript");
-        this._linguagens = document.querySelector("#comboLanguages");
+        this._linguagens = seletor("#comboLanguages");
         this._service = new EditorService();
         this.selecionaLinguagem();
 

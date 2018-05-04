@@ -8,7 +8,6 @@ class EditorService {
      * @param {string} linguagem 
      */
     getCodigoPadrao(linguagem) {
-        console.log(linguagem);
         return this._service.get("http://localhost:8080/EditorWebService/webresources/editor/padrao/".concat(linguagem));
     }
 
