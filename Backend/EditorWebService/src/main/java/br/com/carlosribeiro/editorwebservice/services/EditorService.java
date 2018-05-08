@@ -16,8 +16,6 @@ import br.com.carlosribeiro.editorwebservice.util.FileUtil;
 import br.com.carlosribeiro.editorwebservice.util.RestUtil;
 import com.google.gson.Gson;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;

@@ -17,7 +17,9 @@ class EditorView{
     }
 
  
-
+    /**
+     * Inicia as configurações do Editor
+     */
     initEditor() {
         this._aceEditor.setTheme("ace/theme/".concat(this._tema));
         this._aceEditor.session.setMode("ace/mode/".concat(this._linguagem));
