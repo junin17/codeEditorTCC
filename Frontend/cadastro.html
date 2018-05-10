@@ -14,7 +14,7 @@
     
     <div id="page-content-wrapper">
         <div class="container-fluid" style="width: 95%">
-            <form id="formCadastro">
+            <form id="formCadastro" onsubmit="controller.cadastraUsuario(event)">
                 <div class="form-row">
 
                     <div class="form-group col-md-6">
@@ -50,14 +50,24 @@
                 </div>
                 
 
-                <button type="submit" class="btn btn-primary">Sign in</button>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>
         </div>
     </div>
 
 </body>
-<script>
 
+
+<script src="js/app-es5/model/Usuario.js" type="text/javascript"></script>
+<script src="js/app-es5/model/Resposta.js" type="text/javascript"></script>
+<script src="js/app-es5/services/RestService.js" type="text/javascript"></script>
+<script src="js/app-es5/controllers/CadastroController.js" type="text/javascript"></script>
+
+
+<script>
+    var seletor = document.querySelector.bind(document);
+
+    var controller = new CadastroController();
 </script>
 
 </html>

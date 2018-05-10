@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cadastro de Problemas</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/gridCadastroProblemas.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="page-content-wrapper">
+        <div class="container-fluid" style="width: 95%">
+            <form id="formCadastroProblemas">
+                <div class="form-group">
+                    <label for="inputTitulo">Título</label>
+                    <input type="text" class="form-control" id="inputTitulo" placeholder="Insira o Título do Problema"></input>
+                </div>
+                <div class="form-group">
+                    <label for="inputDescricao">Descrição</label>
+                    <textarea rows="10" class="form-control" id="inputDescricao" placeholder="Insira a Descrição do Problema"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputPontuacao">Pontuação</label>
+                    <input type="number" class="form-control" id="inputPontuacao" placeholder="Insira a pontuação que o participante receberá ao resolver"></input>
+                </div>
+
+
+                <label style="margin-top: 35px">Casos de Teste: </label>
+
+
+                <div class="form-row  linha">
+
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Entrada">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Saida">
+                    </div>
+                </div>
+
+                <div class="form-row linha">
+
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Entrada">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Saida">
+                    </div>
+                </div>
+
+                <div class="form-row linha">
+
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Entrada">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Saida">
+                    </div>
+                </div>
+
+                <div class="form-row linha">
+
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Entrada">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Saida">
+                    </div>
+                </div>
+
+                <div class="form-row linha">
+
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Entrada">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Saida">
+                    </div>
+                </div>
+
+                <div class="form-row linha">
+
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Entrada">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Saida">
+                    </div>
+                </div>
+
+                <div class="form-row linha">
+
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Entrada">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Saida">
+                    </div>
+                </div>
+
+
+                <div class="form-row linha">
+
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Entrada">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Saida">
+                    </div>
+                </div>
+
+
+
+
+            </form>
+
+
+        </div>
+    </div>
+</body>
+
+<script src="js/app-es5/services/ProxyFactory.js"></script>
+<script src="js/app-es5/controllers/CadastroProblemasController.js"></script>
+<script>
+    var seletor = document.querySelector.bind(document);
+    var controller = new CadastroProblemasController();
+
+</script>
+
+</html>

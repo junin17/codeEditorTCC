@@ -30,6 +30,8 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(br.com.carlosribeiro.editorwebservice.services.EditorService.class);
+        resources.add(br.com.carlosribeiro.editorwebservice.services.UsuarioFacadeREST.class);
+        resources.add(br.com.carlosribeiro.editorwebservice.services.UsuarioService.class);
     }
     
 }

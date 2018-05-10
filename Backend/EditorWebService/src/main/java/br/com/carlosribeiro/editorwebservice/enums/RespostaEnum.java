@@ -13,7 +13,7 @@ public enum RespostaEnum {
     OK(0),
     ERROR(1);
 
-    private int valor;
+    private final int valor;
 
     public int getValor() {
         return valor;

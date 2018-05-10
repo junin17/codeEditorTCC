@@ -95,16 +95,6 @@ public class EditorService {
 
     }
 
-    /**
-     * PUT method for updating or creating an instance of EditorService
-     *
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putText(String content) {
-    }
-
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response postCodigo(String content) {

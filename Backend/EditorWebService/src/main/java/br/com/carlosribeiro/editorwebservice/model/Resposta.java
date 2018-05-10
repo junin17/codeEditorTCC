@@ -5,6 +5,8 @@
  */
 package br.com.carlosribeiro.editorwebservice.model;
 
+import com.google.gson.Gson;
+
 /**
  * Classe que contém a resposta de execução do Código.
  * @author carlos.ribeiro
@@ -27,6 +29,11 @@ public class Resposta {
 
     public void setSaida(String saida) {
         this.saida = saida;
+    }
+    
+    public String getJson(){
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
     
     
