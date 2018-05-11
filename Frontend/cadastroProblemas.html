@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label for="inputDescricao">Descrição</label>
-                    <textarea rows="10" class="form-control" id="inputDescricao" placeholder="Insira a Descrição do Problema"></textarea>
+                    <textarea rows="5" class="form-control" id="inputDescricao" placeholder="Insira a Descrição do Problema"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -30,103 +30,32 @@
                     <input type="number" class="form-control" id="inputPontuacao" placeholder="Insira a pontuação que o participante receberá ao resolver"></input>
                 </div>
 
+                <div id="casosTestes" style="margin-bottom: 10px"></div>
 
-                <label style="margin-top: 35px">Casos de Teste: </label>
-
-
-                <div class="form-row  linha">
-
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Entrada">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Saida">
-                    </div>
+                <div class="form-row">
+                    <button type="submit" onclick="controller.salvarProblema(event)" class="btn btn-primary">Salvar</button>
+                    <span style="width: 20px"></span>
+                    <button type="button" onclick="controller.adicionaCasos(event)" class="btn btn-secondary">Adicionar Casos de Teste</button>
                 </div>
-
-                <div class="form-row linha">
-
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Entrada">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Saida">
-                    </div>
-                </div>
-
-                <div class="form-row linha">
-
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Entrada">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Saida">
-                    </div>
-                </div>
-
-                <div class="form-row linha">
-
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Entrada">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Saida">
-                    </div>
-                </div>
-
-                <div class="form-row linha">
-
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Entrada">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Saida">
-                    </div>
-                </div>
-
-                <div class="form-row linha">
-
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Entrada">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Saida">
-                    </div>
-                </div>
-
-                <div class="form-row linha">
-
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Entrada">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Saida">
-                    </div>
-                </div>
-
-
-                <div class="form-row linha">
-
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Entrada">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Saida">
-                    </div>
-                </div>
-
-
-
 
             </form>
 
+            <div style="margin-top: 30px" id="mensagemSaida">
+
+            </div>
 
         </div>
     </div>
 </body>
 
-<script src="js/app-es5/services/ProxyFactory.js"></script>
-<script src="js/app-es5/controllers/CadastroProblemasController.js"></script>
+<script src="js/app/helpers/HTMLHelper.js"></script>
+<script src="js/app/services/RestService.js"></script>
+
+<script src="js/app/model/CasosTestes.js"></script>
+<script src="js/app/model/Problema.js"></script>
+
+<script src="js/app/controllers/CadastroProblemasController.js"></script>
+
 <script>
     var seletor = document.querySelector.bind(document);
     var controller = new CadastroProblemasController();

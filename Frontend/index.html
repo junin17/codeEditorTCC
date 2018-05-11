@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Carlos Ribeiro">
 
     <title>CodeEditor</title>
 
@@ -66,39 +66,42 @@
 
                 <button type="button" className="pure-button pure-button-primary" style="margin-top: 5px" onclick="controler.enviaSubmissao(event)">Submit</button>
 
-                <div class="saida" style="margin-top: 20px">
-                    <span id="saida">
+                <div id="saida" style="margin-top: 20px">
 
-                    </span>
                 </div>
 
             </div>
+
+            
         </div>
         <!-- /#page-content-wrapper -->
 
     </div>
     <!-- /#wrapper -->
 
-    <!-- Bootstrap core JavaScript -->npm
+    <!-- Bootstrap core JavaScript -->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pubsub-js/1.6.0/pubsub.js"></script>
-    <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap/bootstrap.bundle.min.js"></script> -->
 
     <!-- Ace Editor -->
     <script src="js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
 
+    <!-- Helpers -->
+    <script src="js/app/helpers/HTMLHelper.js" type="text/javascript" charset="utf-8"></script>
+
     <!-- Services -->
-    <script src="js/app-es5/services/RestService.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/app-es5/services/EditorService.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/app/services/RestService.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/app/services/EditorService.js" type="text/javascript" charset="utf-8"></script>
     <!-- Model -->
-    <script src="js/app-es5/model/Submit.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/app-es5/model/Resposta.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/app-es5/model/Usuario.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/app/model/Submit.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/app/model/Resposta.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/app/model/Usuario.js" type="text/javascript" charset="utf-8"></script>
 
     <!-- Controllers -->
-    <script src="js/app-es5/controllers/EditorController.js" type="text/javascript" charset="utf-8"></script>
-    
+    <script src="js/app/controllers/EditorController.js" type="text/javascript" charset="utf-8"></script>
+
     <script type="text/javascript" charset="utf-8">
         var seletor = document.querySelector.bind(document);
         var controler = new EditorController();

@@ -1,10 +1,12 @@
 class Problema{
-    constructor(){
-        this.titulo = "";
-        this.descricao = "";
-        this.numero = 0;
-        this.pontuacao = 0;
-        this.nivelMinimo = 0;
+    constructor(titulo,descricao,pontuacao){
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.pontuacao = pontuacao;
         this.casosTestes = [];
+    }
+
+    addCasoTeste(casoTeste){
+        this.casosTestes.push(casoTeste);
     }
 }

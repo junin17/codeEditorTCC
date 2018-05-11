@@ -1,4 +1,8 @@
 class RestService{
+    
+    constructor(){
+
+    }
 
     _handleErrors(res){
         if (!res.ok) throw new Error (res.statusText);

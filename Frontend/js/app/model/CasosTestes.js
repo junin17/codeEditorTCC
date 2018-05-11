@@ -1,7 +1,10 @@
+/**
+ * Classe que representa os Casos de Teste do Problema.
+ */
 class CasosTestes{
-    constructor(){
-        this.entrada = "";
-        this.saida = "";
+    constructor(entrada,saida){
+        this.entrada = entrada;
+        this.saida = saida;
         
     }
 }

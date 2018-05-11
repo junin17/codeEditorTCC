@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.carlosribeiro.editorwebservice.services;
+package br.com.carlosribeiro.editorwebservice.service;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
@@ -29,9 +29,9 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(br.com.carlosribeiro.editorwebservice.services.EditorService.class);
-        resources.add(br.com.carlosribeiro.editorwebservice.services.UsuarioFacadeREST.class);
-        resources.add(br.com.carlosribeiro.editorwebservice.services.UsuarioService.class);
+        resources.add(br.com.carlosribeiro.editorwebservice.service.EditorREST.class);
+        resources.add(br.com.carlosribeiro.editorwebservice.service.ProblemaFacadeREST.class);
+        resources.add(br.com.carlosribeiro.editorwebservice.service.UsuarioFacadeREST.class);
     }
     
 }

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.carlosribeiro.editorwebservice.services;
+package br.com.carlosribeiro.editorwebservice.service;
 
-import br.com.carlosribeiro.editorwebservice.bean.Usuario;
+import br.com.carlosribeiro.editorwebservice.bean.CasosTestes;
+import br.com.carlosribeiro.editorwebservice.bean.Problema;
 import br.com.carlosribeiro.editorwebservice.enums.RespostaEnum;
 import br.com.carlosribeiro.editorwebservice.model.Resposta;
-import br.com.carlosribeiro.editorwebservice.persistencia.PersistenciaBase;
 import br.com.carlosribeiro.editorwebservice.util.RestUtil;
 import com.google.gson.Gson;
 import java.util.List;
@@ -31,29 +31,29 @@ import javax.ws.rs.core.Response;
  * @author carlos.ribeiro
  */
 @Stateless
-@Path("usuarioCadastro")
-public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
+@Path("problemaCadastro")
+public class ProblemaFacadeREST extends AbstractFacade<Problema> {
 
     @PersistenceContext(unitName = "Persistence")
     private EntityManager em;
     private final Gson gson;
 
-    public UsuarioFacadeREST() {
-        super(Usuario.class);
+    public ProblemaFacadeREST() {
+        super(Problema.class);
         gson = new Gson();
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Usuario entity) {
+    public void create(Problema entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Integer id, Usuario entity) {
+    public void edit(@PathParam("id") Integer id, Problema entity) {
         super.edit(entity);
     }
 
@@ -66,21 +66,21 @@ public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Usuario find(@PathParam("id") Integer id) {
+    public Problema find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Usuario> findAll() {
+    public List<Problema> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Usuario> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Problema> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 
@@ -97,23 +97,29 @@ public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
     }
     
     @POST
-    @Path("cadastro")
+    @Path("salvar")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response postCadastro(String content) {
+    public Response salvarProblema(String content) {
         Resposta resposta = new Resposta();
         try{
             
             
-            Usuario usuario = gson.fromJson(content, Usuario.class);
+            Problema problema = gson.fromJson(content, Problema.class);
             
-            super.create(usuario);
-            resposta.setSaida("Usuario Salvo com Sucesso!");
+            if (problema.getCasosTestes() != null){
+                for (CasosTestes caso : problema.getCasosTestes()){
+                    caso.setProblema(problema);
+                }
+            }
+            
+            super.create(problema);
+            resposta.setSaida("Problema Salvo com Sucesso!");
             resposta.setStatus(RespostaEnum.OK.getValor());
             return RestUtil.responseOk(gson.toJson(resposta));
         }
         catch(Exception ex){
             System.out.println(ex);
-            resposta.setSaida("Erro ao Salvar Usuario!");
+            resposta.setSaida("Erro ao Salvar Problema!");
             resposta.setStatus(RespostaEnum.ERROR.getValor());
             return RestUtil.responseOk(gson.toJson(resposta));
         }

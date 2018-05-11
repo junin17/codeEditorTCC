@@ -69,7 +69,7 @@ class EditorController {
      */
     exibeResposta(resposta){
         let saida = document.querySelector("#saida");
-        saida.innerHTML = resposta.saidaFormatada;
+        saida.innerHTML = resposta.status === 0 ? HTMLHelper.alertSucesso(resposta.saidaFormatada) : HTMLHelper.alertErro(resposta.saidaFormatada);
     }
 
     

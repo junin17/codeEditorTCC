@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.carlosribeiro.editorwebservice.services;
+package br.com.carlosribeiro.editorwebservice.service;
 
 import br.com.carlosribeiro.editorwebservice.compiler.CsharpCompiler;
 import br.com.carlosribeiro.editorwebservice.compiler.JavaCompiler;
@@ -34,7 +34,7 @@ import javax.ws.rs.core.Response;
  * @author carlos.ribeiro
  */
 @Path("editor")
-public class EditorService {
+public class EditorREST {
 
     @Context
     private UriInfo context;
@@ -43,7 +43,7 @@ public class EditorService {
     /**
      * Creates a new instance of EditorService
      */
-    public EditorService() {
+    public EditorREST() {
         this.gson = new Gson();
     }
 
