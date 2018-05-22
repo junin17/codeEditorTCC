@@ -3,3 +3,6 @@ Frontend/js/app-es5
 Backend/EditorWebService/target
 npm-debug.log
 teste
+codeeditor
+Docker/wildfly/deploys/*
+Docker/wildfly/standalone/standalone_xml_history

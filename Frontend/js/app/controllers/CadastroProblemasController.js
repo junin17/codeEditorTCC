@@ -20,8 +20,6 @@ class CadastroProblemasController {
             problema.addCasoTeste(new CasosTestes(entrada.value,saida.value));
         })
         
-        console.log(problema);
-
         this._service.post("http://localhost:8080/EditorWebService/webresources/problemaCadastro/salvar",problema)
         .then(res => {
             console.log(res);
