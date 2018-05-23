@@ -1,0 +1,6 @@
+version: '3'
+services:
+  wildfly:
+    dockerfile: ./wildfly.dockerfile
+    context: .
+  image: junin17/wildfly
