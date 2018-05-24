@@ -1,8 +1,14 @@
 # codeEditorTCC
 
-Para executar o servidor vá até a pasta /Docker e execute os seguintes comandos:
 
+Para construir os containers do servidor, va até o diretório /Docker no terminal e execute o seguinte comando:
 ```bash
-PS> docker-compose build
-PS> docker-compose up
+docker-compose build
 ```
+
+Para subir o servidor execute o seguinte comando no mesmo diretório:
+```bash
+docker-compose up
+```
+
+
