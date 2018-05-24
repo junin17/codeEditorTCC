@@ -12,6 +12,7 @@ RUN mkdir -p /opt/jboss/wildfly/modules/system/layers/base/org/postgresql/main
 COPY wildfly/driverDB  /opt/jboss/wildfly/modules/system/layers/base/org/postgresql/main
 COPY wildfly/deploys /opt/jboss/wildfly/standalone/deployments
 COPY wildfly/standalone /opt/jboss/wildfly/standalone/configuration/
+COPY wildfly/padroes /opt/jboss/
 EXPOSE 8080
 
 #CMD ["/bin/bash"]

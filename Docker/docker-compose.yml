@@ -1,6 +1,31 @@
-version: '3'
+version: '3.6'
 services:
   wildfly:
-    dockerfile: ./wildfly.dockerfile
-    context: .
-  image: junin17/wildfly
+    build:
+      dockerfile: ./wildfly.dockerfile
+      context: .
+    image: junin17/wildfly
+    container_name: wildfly
+    volumes:
+      - ./wildfly/deploys:/opt/jboss/wildfly/standalone/deployments
+    ports:
+      - "8080:8080"
+    networks:
+      - rede
+    depends_on: 
+      - "postgres"
+  
+  postgres:
+    build:
+      dockerfile: ./postgres.dockerfile
+      context: .
+    image: junin17/postgres
+    container_name: postgres
+    ports:
+      - "1122:5432"
+    networks: 
+      - rede
+
+networks: 
+  rede:
+    driver: bridge
