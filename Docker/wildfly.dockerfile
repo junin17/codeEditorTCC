@@ -6,13 +6,16 @@ USER root
 RUN yum -y install epel-release
 RUN yum -y install nodejs
 RUN yum -y install python34
-USER jboss
+
 
 RUN mkdir -p /opt/jboss/wildfly/modules/system/layers/base/org/postgresql/main
 COPY wildfly/driverDB  /opt/jboss/wildfly/modules/system/layers/base/org/postgresql/main
 COPY wildfly/deploys /opt/jboss/wildfly/standalone/deployments
 COPY wildfly/standalone /opt/jboss/wildfly/standalone/configuration/
 COPY wildfly/padroes /opt/jboss/
+
+USER jboss
+
 EXPOSE 8080
 
 #CMD ["/bin/bash"]

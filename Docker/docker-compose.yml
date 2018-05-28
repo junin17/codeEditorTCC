@@ -6,8 +6,6 @@ services:
       context: .
     image: junin17/wildfly
     container_name: wildfly
-    volumes:
-      - ./wildfly/deploys:/opt/jboss/wildfly/standalone/deployments
     ports:
       - "8080:8080"
     networks:
